@@ -187,6 +187,9 @@ public class CSVGenerator extends CSVContent {
     public void clearContent(){
         content="";
     }
+    public String getContent() {
+        return content;
+    }
     private String appendContent(String addedContent){
         content += addedContent+NEW_LINE;
         return content;
