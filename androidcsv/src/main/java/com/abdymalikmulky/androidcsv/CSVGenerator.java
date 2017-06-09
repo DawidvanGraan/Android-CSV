@@ -66,10 +66,8 @@ public class CSVGenerator extends CSVContent {
         String[] bracketSplit = content.split("\\{");
         output = bracketSplit[1];
         output = output.replace(BRACKET_CLOSE,"");
-        output = output.replaceAll("\\s+","");
+//        output = output.replaceAll("\\s+","");
         output = output.replaceAll(APOSTROPHE,"");
-
-
         return output;
     }
 
