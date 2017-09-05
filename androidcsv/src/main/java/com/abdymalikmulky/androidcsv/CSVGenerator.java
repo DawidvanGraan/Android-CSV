@@ -114,7 +114,14 @@ public class CSVGenerator extends CSVContent {
         for (int i=0;i<commSplit.length;i++){
             if(!stringContainsItemFromList(commSplit[i],exceptionColumn)) {
                 String[] equalSplit = commSplit[i].split("=");
-                contentStr = equalSplit[contentIndex];
+                
+                // Getting a crash where index out of bounds, lenght = 1 and index = 1
+                if (contentIndex > equalSplit.length - 1) {
+                    contentStr = commSplit[i];
+                } else {
+                    contentStr = equalSplit[contentIndex];
+                }
+                //contentStr = equalSplit[contentIndex];
 
 
                 if (isHeader) {
