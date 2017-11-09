@@ -103,39 +103,59 @@ public class CSVGenerator extends CSVContent {
     private String getContentTable(String content,boolean isHeader){
         String contentTable = "";
         String contentStr = "";
-        int contentIndex = 0;
+        int contentIndex = isHeader ? 0 : 1;
 
-        if(!isHeader){
-            contentIndex=1;
-        }
+        if(!stringContainsItemFromList(content,exceptionColumn)) {
+            final String[] equalSplit = content.split("=");
 
-
-        String[] commSplit = content.split(COMMA);
-        for (int i=0;i<commSplit.length;i++){
-            if(!stringContainsItemFromList(commSplit[i],exceptionColumn)) {
-                String[] equalSplit = commSplit[i].split("=");
-                
-                // Getting a crash where index out of bounds, lenght = 1 and index = 1
-                if (contentIndex > equalSplit.length - 1) {
-                    contentStr = commSplit[i];
-                } else {
-                    contentStr = equalSplit[contentIndex];
-                }
-                //contentStr = equalSplit[contentIndex];
-
-
-                if (isHeader) {
-                    contentStr = contentStr.toUpperCase();
-                }
-
-                if (i > 0 && !contentTable.equals("")) {
-                    contentTable = contentTable + COMMA;
-                }
-
-
-                contentTable += appendQuote(contentStr);
+            // Getting a crash where index out of bounds, lenght = 1 and index = 1
+            if (contentIndex > equalSplit.length - 1) {
+                contentStr = "<CHECK YOUR MODEL>";
+            } else {
+                contentStr = equalSplit[contentIndex];
             }
+            //contentStr = equalSplit[contentIndex];
+
+
+            if (isHeader) {
+                contentStr = contentStr.toUpperCase();
+            }
+
+            if (i > 0 && !contentTable.equals("")) {
+                contentTable = contentTable + COMMA;
+            }
+
+
+            contentTable += appendQuote(contentStr);
         }
+        
+
+//         String[] commSplit = content.split(COMMA);
+//         for (int i=0;i<commSplit.length;i++){
+//             if(!stringContainsItemFromList(commSplit[i],exceptionColumn)) {
+//                 String[] equalSplit = commSplit[i].split("=");
+                
+//                 // Getting a crash where index out of bounds, lenght = 1 and index = 1
+//                 if (contentIndex > equalSplit.length - 1) {
+//                     contentStr = commSplit[i];
+//                 } else {
+//                     contentStr = equalSplit[contentIndex];
+//                 }
+//                 //contentStr = equalSplit[contentIndex];
+
+
+//                 if (isHeader) {
+//                     contentStr = contentStr.toUpperCase();
+//                 }
+
+//                 if (i > 0 && !contentTable.equals("")) {
+//                     contentTable = contentTable + COMMA;
+//                 }
+
+
+//                 contentTable += appendQuote(contentStr);
+//             }
+//         }
 
         return contentTable;
     }
