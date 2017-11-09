@@ -121,9 +121,9 @@ public class CSVGenerator extends CSVContent {
                 contentStr = contentStr.toUpperCase();
             }
 
-            if (i > 0 && !contentTable.equals("")) {
-                contentTable = contentTable + COMMA;
-            }
+            //if (i > 0 && !contentTable.equals("")) {
+            //    contentTable = contentTable + COMMA;
+            //}
 
 
             contentTable += appendQuote(contentStr);
