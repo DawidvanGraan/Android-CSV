@@ -7,20 +7,24 @@ library for exporting data to csv
 Download via gradle : 
 
 ```gradle
-compile 'com.github.abdymm:androidcsv:0.1.5'
-```
-
-or Maven:
-```xml
-<dependency>
-  <groupId>com.github.abdymm</groupId>
-  <artifactId>androidcsv</artifactId>
-  <version>0.1.5</version>
-  <type>pom</type>
-</dependency>
+compile 'com.github.DawidvanGraan:Android-CSV:0.1.10'
 ```
 
 ##How it Works
+### Setup your models
+Ensure that your domain models are setup to return a string representation as below.
+
+```java
+@Override
+public String toString() {
+    return "ToDo{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            ", description='" + description + '\'' +
+            ", status='" + status + '\'' +
+            '}';
+}
+```
 
 
 
